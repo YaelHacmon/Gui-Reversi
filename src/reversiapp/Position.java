@@ -1,10 +1,9 @@
 package reversiapp;
 
-
 public class Position {
-	
-	// row of location on map
+    // row of location on map
     private int row_;
+
     // column of location on map
     private int col_;
 
@@ -23,7 +22,6 @@ public class Position {
         return false;
     }
 
-    
     public boolean equals(Position other) {
         return (this.getRow() == other.getRow() && this.getColumn() == other.getColumn());
     }
@@ -33,7 +31,7 @@ public class Position {
      * @return row of location
      */
     public int getRow() {
-        return row_;
+        return this.row_;
     }
 
     /**
@@ -46,20 +44,20 @@ public class Position {
 
     @Override
     public String toString() {
-        return "(" + Integer.toString(row_) + "," + Integer.toString(col_) + ")";
+        return "(" + Integer.toString(this.row_) + "," + Integer.toString(this.col_) + ")";
     }
-    
+
     public void set(int row, int col) {
-    	row_ = row;
-    	col_ = col;
+        this.row_ = row;
+        this.col_ = col;
     }
 
     public void set(Position loc) {
-    	set(loc.getRow(), loc.getColumn());
+        this.set(loc.getRow(), loc.getColumn());
     }
 
     public void increment(int incR, int incC) {
-    	row_ += incR;
-    	col_ += incC;
+        this.row_ += incR;
+        this.col_ += incC;
     }
 }

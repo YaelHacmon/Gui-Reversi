@@ -7,27 +7,25 @@ package reversiapp;
  */
 public class HumanPlayer extends Player {
 
+    HumanPlayer(Player other) {
+        super(other);
+    }
 
-	HumanPlayer(Player other) {
-		super(other);
-	}
+    HumanPlayer(String name, ElementInBoard c) {
+        super(name, c);
+    }
 
-	HumanPlayer(String name, ElementInBoard c){
-		super(name,c);
-	}
+    public Position getNextMove(ViewGame view, StandardMoveLogic logic, Board board, Player other) {
+        // ask for move
+        view.showMessage("Please enter your moves row,col:");
 
+        // return choice of move
+        return view.getMoveFromUser();
+    }
 
-	public Position getNextMove(ViewGame view, StandardMoveLogic logic, Board board,Player other){
-		//ask for move
-		view.showMessage("Please enter your moves row,col:");
-
-		//return choice of move
-		return view.getMoveFromUser();
-	}
-
-	public Player clone() throws CloneNotSupportedException 	{
-		return new HumanPlayer(this);
-	}
-
+    @Override
+    public Player clone() throws CloneNotSupportedException {
+        return new HumanPlayer(this);
+    }
 
 }

@@ -4,12 +4,13 @@ package reversiapp;
 // * Implementation of main function - runs program
 // */
 
-class OldMain{
+class OldMain {
 
-	private static final ElementInBoard BLACK = null;
-	private static final ElementInBoard WHITE = null;
-	
-	@SuppressWarnings("null")
+    private static final ElementInBoard BLACK = null;
+
+    private static final ElementInBoard WHITE = null;
+
+    @SuppressWarnings("null")
 	public main() {
 		//allocate menu, board, logic and view on stack - currently there is only one type of logic and view, no need to allocate dynamically
 		Board board = new Board(8);
@@ -32,5 +33,4 @@ class OldMain{
 		game_manger.playGame();
 	}
 
-	
 }

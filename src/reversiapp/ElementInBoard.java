@@ -1,6 +1,5 @@
 package reversiapp;
 
-
 public enum ElementInBoard {
-	BLACK, WHITE, EMPTY
+    BLACK, WHITE, EMPTY
 }

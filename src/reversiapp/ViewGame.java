@@ -8,41 +8,41 @@ import java.util.ArrayList;
  */
 public interface ViewGame {
 
-	/**
-	 * Represents the view of the game, handles any interaction with the player.
-	 * All functions are pure virtual, seeing as implementation depends on viewing tools (console, GUI, etc.)
-	 */
-	
-	// present the board
-	public void printBoard(ElementInBoard [][] board, int sizeOfBoard);
+    /**
+     * Represents the view of the game, handles any interaction with the player.
+     * All functions are pure virtual, seeing as implementation depends on viewing tools (console, GUI, etc.)
+     */
 
-	// message to switch turns
-	public void messageForTurn (String curPlayer);
+    // present the board
+    public void printBoard(ElementInBoard[][] board, int sizeOfBoard);
 
-	// message of possible moves
-	public void messagePossibleMoves(ArrayList<Position> possibleMoves);
+    // message to switch turns
+    public void messageForTurn(String curPlayer);
 
-	// display the player's last move
-	public void messagePlayerMove(Position pointToDisplay, String curPlayer);
+    // message of possible moves
+    public void messagePossibleMoves(ArrayList<Position> possibleMoves);
 
-	// message who is the winner
-	public void messageWinner(String winPlayer);
+    // display the player's last move
+    public void messagePlayerMove(Position pointToDisplay, String curPlayer);
 
-	//show any type of message
-	public void showMessage(String stringToShow);
+    // message who is the winner
+    public void messageWinner(String winPlayer);
 
-	//shows switching turns message and waits for any key press
-	public void messageSwitchTurns();
+    // show any type of message
+    public void showMessage(String stringToShow);
 
-	//gets move from outside user of game
-	Position getMoveFromUser();
+    // shows switching turns message and waits for any key press
+    public void messageSwitchTurns();
 
-	/**
-	 * Shows the options in the vector by option's index, and returns user's choice.
-	 *
-	 * Index 0 should be menu's title, and other indexes should hold the matching message for the option.
-	 * Messages should fit the format: "To MESSAGE, press INDEX"
-	 */
-	public int presentMenu(ArrayList<String> menuOpps);
+    // gets move from outside user of game
+    Position getMoveFromUser();
+
+    /**
+     * Shows the options in the vector by option's index, and returns user's choice.
+     *
+     * Index 0 should be menu's title, and other indexes should hold the matching message for the option.
+     * Messages should fit the format: "To MESSAGE, press INDEX"
+     */
+    public int presentMenu(ArrayList<String> menuOpps);
 
 }

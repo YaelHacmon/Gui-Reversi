@@ -2,7 +2,6 @@ package FXMLReversi;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,65 +13,65 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import reversiapp.*;
 
-public class RevesiGameController implements Initializable{
-	@FXML
-	private HBox root;
+public class RevesiGameController implements Initializable {
+    @FXML
+    private HBox root;
 
-	@FXML
-	private GridPane board;
+    @FXML
+    private GridPane board;
 
-	@FXML
-	private Text currPlayerText;
+    @FXML
+    private Text currPlayerText;
 
-	@FXML
-	private Text whitePlayerScoreText;
+    @FXML
+    private Text whitePlayerScoreText;
 
-	@FXML
-	private Text blackPlayerScoreText;
+    @FXML
+    private Text blackPlayerScoreText;
 
-	private BoardController boardController;
+    private BoardController boardController;
 
-	//TODO
-	private GUIAdapter adapter;
+    // TODO
+    private GUIAdapter adapter;
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		boardController = new BoardController();
-		boardController.setPadding(new Insets(10, 10, 10, 10));
-		boardController.setPrefHeight(500);
-		boardController.setPrefWidth(500);
-		board.getChildren().add(0, boardController);
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        this.boardController = new BoardController();
+        this.boardController.setPadding(new Insets(10, 10, 10, 10));
+        this.boardController.setPrefHeight(500);
+        this.boardController.setPrefWidth(500);
+        this.board.getChildren().add(0, this.boardController);
 
-		adapter = GUIAdapter.getInstance(true);
+        this.adapter = GUIAdapter.getInstance(true);
 
-		root.widthProperty().addListener((observable, oldValue, newValue) -> {
-			double boardNewWidth = newValue.doubleValue() - 240 - 20;
-			boardController.setPrefWidth(boardNewWidth);
-			boardController.setPadding(new Insets(10, 10, 10, 10));
-			boardController.draw();
-		});
+        this.root.widthProperty().addListener((observable, oldValue, newValue) -> {
+            double boardNewWidth = newValue.doubleValue() - 240 - 20;
+            this.boardController.setPrefWidth(boardNewWidth);
+            this.boardController.setPadding(new Insets(10, 10, 10, 10));
+            this.boardController.draw();
+        });
 
-		root.heightProperty().addListener((observable, oldValue, newValue) -> {
-			double boardNewHeight = newValue.doubleValue() - 20;
-			boardController.setPrefHeight(boardNewHeight);
-			boardController.setPadding(new Insets(10, 10, 10, 10));
-			boardController.draw();
-		});
-	}
+        this.root.heightProperty().addListener((observable, oldValue, newValue) -> {
+            double boardNewHeight = newValue.doubleValue() - 20;
+            this.boardController.setPrefHeight(boardNewHeight);
+            this.boardController.setPadding(new Insets(10, 10, 10, 10));
+            this.boardController.draw();
+        });
+    }
 
-	public void redraw(Board b) {
-		boardController.draw(b);
-	}
+    public void redraw(Board b) {
+        this.boardController.draw(b);
+    }
 
-	public void changeCurrentPlayer(String player) {
-		currPlayerText.setText(player);
-	}
+    public void changeCurrentPlayer(String player) {
+        this.currPlayerText.setText(player);
+    }
 
-	public void changeWhitePlayerScore(String score) {
-		whitePlayerScoreText.setText(score);
-	}
+    public void changeWhitePlayerScore(String score) {
+        this.whitePlayerScoreText.setText(score);
+    }
 
-	public void changeBlackPlayerScore(String score) {
-		blackPlayerScoreText.setText(score);
-	}
+    public void changeBlackPlayerScore(String score) {
+        this.blackPlayerScoreText.setText(score);
+    }
 }

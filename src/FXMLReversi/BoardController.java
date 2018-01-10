@@ -14,48 +14,50 @@ import reversiapp.Position;
 
 public class BoardController extends GridPane {
 
-	//TODO- CONSTRUCTOR
+    // TODO- CONSTRUCTOR
 
-	private final GUIAdapter adapter;
-	//image to every cell
-	private final ImageView[][] Cells;
-	private final int size;
+    private final GUIAdapter adapter;
 
-	private boolean firstTime = true;
+    // image to every cell
+    private final ImageView[][] Cells;
 
-	private Board lastBoard;
-	size = lastBoard.getSize;
+    private final int size;
 
-	public void draw(Board board) {
-		lastBoard = board;   
-		this.draw();
-	}
+    private boolean firstTime = true;
 
-	public void draw() {
-		int height; 
-		int width; 
+    private Board lastBoard;size=lastBoard.getSize;
 
-		int cellHeight = height / size;
-		int cellWidth = width / size;
+    public void draw(Board board) {
+        this.lastBoard = board;
+        this.draw();
+    }
 
-		for (int i = 0; i < size; i++) {
-			for (int j = 0; j < size; j++) {
-				ElementInBoard currCell = lastBoard.getCell(new Position(i, j));
-				if (firstTime) {
-					int row = i;
-					int col = j;
-					Cells[i][j] = new ImageView();
+    public void draw() {
+        int height;
+        int width;
 
-					//TODO
-					
-				};
-			}
-		}
-		firstTime = false;
-	}
-	
-	//TODO
-	public Position calcMouseClick(MouseEvent event) {
+        int cellHeight = height / this.size;
+        int cellWidth = width / this.size;
 
-	}
+        for (int i = 0; i < this.size; i++) {
+            for (int j = 0; j < this.size; j++) {
+                ElementInBoard currCell = this.lastBoard.getCell(new Position(i, j));
+                if (this.firstTime) {
+                    int row = i;
+                    int col = j;
+                    this.Cells[i][j] = new ImageView();
+
+                    // TODO
+
+                }
+                ;
+            }
+        }
+        this.firstTime = false;
+    }
+
+    // TODO
+    public Position calcMouseClick(MouseEvent event) {
+
+    }
 }
