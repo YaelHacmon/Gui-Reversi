@@ -56,7 +56,7 @@ public class MenuController implements Initializable {
         }
         Thread gameThread = new Thread() {
             @Override
-            // TODO
+            // TODO y needed??
             public void run() {
 
             }
