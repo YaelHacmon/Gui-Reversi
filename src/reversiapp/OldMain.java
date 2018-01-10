@@ -4,7 +4,7 @@ package reversiapp;
 // * Implementation of main function - runs program
 // */
 
-class main{
+class OldMain{
 
 	private static final ElementInBoard BLACK = null;
 	private static final ElementInBoard WHITE = null;
