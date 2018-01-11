@@ -2,16 +2,14 @@ package FXMLReversi;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
-import javafx.scene.text.Text;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import reversiapp.*;
+import javafx.scene.text.Text;
+import reversiapp.Board;
+import reversiapp.GUIAdapter;
 
 public class RevesiGameController implements Initializable {
     @FXML

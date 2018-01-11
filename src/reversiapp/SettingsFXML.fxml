@@ -19,13 +19,13 @@ fx:controller="reversiapp.SettingsController" alignment="center" hgap="10" vgap=
      <TextField fx:id="boardSize"
      GridPane.rowIndex="0" GridPane.columnIndex="1"/
 	
-	 <Label text="Player's color (r,g,b):"
+	 <Label text="First (X) player's color:"
 	 GridPane.rowIndex="1" GridPane.columnIndex="0"/>
 	
 	 <TextField fx:id="playerColor"
 	 GridPane.rowIndex="1" GridPane.columnIndex="1"/
 	 
-	<Label text="Opponent's color (r,g,b):"
+	<Label text="Second (O) player's color:"
      GridPane.rowIndex="2" GridPane.columnIndex="0"/>
     
      <TextField fx:id="opponentColor"
@@ -33,6 +33,10 @@ fx:controller="reversiapp.SettingsController" alignment="center" hgap="10" vgap=
 </GridPane>
 
 <HBox alignment="bottom_right"
-GridPane.rowIndex="4" GridPane.columnIndex="1">
-<Button text="Save" onAction="#save"/>
+GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+<Button fx:id="exitBtn" text="Exit"
+GridPane.rowIndex="4" GridPane.columnIndex="2"/>
 </HBox>
+
+<Text fx:id="messageText"
+GridPane.rowIndex="6" GridPane.columnIndex="0"/>
