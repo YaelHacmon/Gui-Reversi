@@ -20,7 +20,7 @@ public class GUIAdapter {
         return instance;
     }
 
-    public static GUIAdapter getInstance(boolean gui) {
+    public static GUIAdapter getInstance(boolean gui) { // TODO - what's with the boolean? i don't get it :(
         if (instance == null) {
             instance = new GUIAdapter();
         }

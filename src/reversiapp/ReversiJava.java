@@ -10,7 +10,7 @@ public class ReversiJava extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(this.getClass().getResource("fxml/MenuFXML.fxml"));
+        Parent root = FXMLLoader.load(this.getClass().getResource("FXMLReversi/MenuFXML.fxml"));
 
         Scene scene = new Scene(root);
 
