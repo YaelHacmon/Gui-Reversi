@@ -11,7 +11,7 @@ public class HumanPlayer extends Player {
         super(other);
     }
 
-    HumanPlayer(String name, ElementInBoard c) {
+    public HumanPlayer(String name, ElementInBoard c) {
         super(name, c);
     }
 

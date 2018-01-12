@@ -11,10 +11,10 @@ public class ReversiJava extends Application {
     public void start(Stage primaryStage) {
         try {
             // load root from fxml
-            BorderPane root = (BorderPane) FXMLLoader.load(this.getClass().getResource("GameFXML.fxml"));
+            BorderPane root = (BorderPane) FXMLLoader.load(this.getClass().getResource("FAMLReversi/MenuFXML.fxml"));
             // create scene
             Scene scene = new Scene(root, 400, 400);
-            scene.getStylesheets().add(this.getClass().getResource("reversiapp.css").toExternalForm());
+            scene.getStylesheets().add(this.getClass().getResource("FAMLReversi/reversiapp.css").toExternalForm());
             // set stage to use scene
             primaryStage.setScene(scene);
             // show stage

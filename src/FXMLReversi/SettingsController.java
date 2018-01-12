@@ -42,11 +42,15 @@ public class SettingsController implements Initializable {
         this.exitBtn.setOnAction((event) -> {
             // return to menu scene
             try {
+                // load scene
                 FXMLLoader settingsLoader = new FXMLLoader(this.getClass().getResource("MenuFXML.fxml"));
                 Parent settingsParent = (Parent) settingsLoader.load();
                 Scene settingsScene = new Scene(settingsParent);
+                // set scene
                 Stage theStage = (Stage) this.exitBtn.getScene().getWindow();
                 theStage.setScene(settingsScene);
+                // show stage
+                theStage.show();
             } catch (Exception ex) {
                 System.out.println("Return to menu error:");
                 ex.printStackTrace();
@@ -54,7 +58,7 @@ public class SettingsController implements Initializable {
         });
 
         // create tooltip to notify of color format
-        Tooltip t = new Tooltip("Colors: blue, green, red, yellow,\nwhite, black, orange, pink, purple");
+        Tooltip t = new Tooltip("Colors: Blue, Green, Red, Yellow, White, Black");
         // set tooltip to both color fields
         this.playerColor.setTooltip(t);
         this.opponentColor.setTooltip(t);
@@ -77,10 +81,13 @@ public class SettingsController implements Initializable {
         } else if (!this.isColor(playerC) || !this.isColor(oponnentC)) {
             this.messageText.setText("Unrecognized color format, please try again");
             this.messageText.setFill(Color.RED);
-
+        } else if (playerC.equals(oponnentC)) {
+            this.messageText.setText("Players' colors must be different, please try again");
+            this.messageText.setFill(Color.RED);
         } else {
-            // create string to save, format: boardSize \n playerColor \n opponentColor
-            String output = this.boardSize + "\n" + this.playerColor + "\n" + this.opponentColor;
+            // create string to save, format: boardSize \n ../../pics/playerColor.png \n ../../pics/opponentColor.png
+            String output = this.boardSize + "\n../../pics/" + this.playerColor + ".png\n../../pics/"
+                    + this.opponentColor + ".png";
 
             // save to file
             // if succeeded - show message
@@ -101,8 +108,8 @@ public class SettingsController implements Initializable {
      */
     protected boolean isColor(String s) {
         // return true if given string is one of the possible 7 colors
-        return (s.equals("blue") || s.equals("green") || s.equals("red") || s.equals("yellow") || s.equals("white")
-                || s.equals("black") || s.equals("orange") || s.equals("pink") || s.equals("purple"));
+        return (s.equals("Blue") || s.equals("Green") || s.equals("Red") || s.equals("Yellow") || s.equals("White")
+                || s.equals("Black"));
     }
 
     /**

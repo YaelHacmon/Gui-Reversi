@@ -12,7 +12,7 @@ package reversiapp;
  * Is responsible for playing the turns, knowing and notifying when the game ends, and printing
  * messages to the players.
  */
-class GameManager {
+public class GameManager {
 
     // board of game
     private Board board_;

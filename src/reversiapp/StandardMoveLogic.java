@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * A move is allowed only if it changes square colors, and square colors are changed if the new
  * move blocks a range of squares with the opposite color between move and a same-colored square.
  */
-class StandardMoveLogic {
+public class StandardMoveLogic {
 
     /**
      * Plays the given move for the given player on given board, according to the logic decided.
