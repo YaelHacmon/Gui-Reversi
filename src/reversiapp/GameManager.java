@@ -1,5 +1,7 @@
 package reversiapp;
 
+import FXMLReversi.BoardController;
+
 /**
  * Yael Hacmon, ID 313597897
  * Roni Fultheim, ID 313465965
@@ -15,17 +17,19 @@ package reversiapp;
 public class GameManager {
 
     // board of game
-    private Board board_;
+    private Board board;
 
     // Starting player is black by default.
-    private HumanPlayer currPlayer_;
+    private HumanPlayer currPlayer;
 
     // Opposite player is black by default.
-    private HumanPlayer oppPlayer_;
+    private HumanPlayer oppPlayer;
 
-    private StandardMoveLogic logic_;
+    private StandardMoveLogic logic;
 
-    private ViewGame view_;
+    private ReversiListener listener;
+
+    private BoardController controller;
 
     /**
      * Constructor taking a board on which to play game, two players, and the logic of the moves.
@@ -33,12 +37,16 @@ public class GameManager {
      * @param black black player
      * @param white white player
      * @param log logic to handle moves
+     * @param list listener of game
+     * @param bc controller of board
      */
-    public GameManager(ViewGame view, Board b, HumanPlayer black, HumanPlayer white, StandardMoveLogic log) {
-        this.board_ = b;
-        this.currPlayer_ = black;
-        this.oppPlayer_ = white;
-        this.view_ = view;
+    public GameManager(Board b, HumanPlayer black, HumanPlayer white, StandardMoveLogic log, ReversiListener list,
+            BoardController bc) {
+        this.board = b;
+        this.currPlayer = black;
+        this.oppPlayer = white;
+        this.listener = list;
+        this.controller = bc;
     }
 
     /**
@@ -49,7 +57,7 @@ public class GameManager {
         boolean noMoves = false;
 
         this.view_.showMessage("Current board:");
-        this.view_.printBoard(this.board_.getBoard(), this.board_.getSize());
+        this.view_.printBoard(this.board.getBoard(), this.board.getSize());
 
         /*
          * General explanation - First, build a list containing all the empty cells on the board. then, checking what
@@ -57,33 +65,33 @@ public class GameManager {
          * and the board update acoording to the selected point.
          */
         // while game is not over - keep playing
-        while (!this.board_.isBoardFull()) {
+        while (!this.board.isBoardFull()) {
             // display current turn
-            this.view_.messageForTurn(this.currPlayer_.getName());
+            this.view_.messageForTurn(this.currPlayer.getName());
 
             // initialize moves for black and white players
-            this.logic_.updateMoveOptions(this.currPlayer_, this.board_);
+            this.logic.updateMoveOptions(this.currPlayer, this.board);
 
             // declare move here - so we can show move later
             Position move = new Position(-1, -1);
 
             // if current player can play his turn
-            if (this.logic_.canPlayTurn(this.currPlayer_)) {
+            if (this.logic.canPlayTurn(this.currPlayer)) {
                 // show possible moves
-                this.view_.messagePossibleMoves(this.currPlayer_.getPossibleMoves());
+                this.view_.messagePossibleMoves(this.currPlayer.getPossibleMoves());
 
                 // get next player's move
-                move = this.currPlayer_.getNextMove(this.view_, this.logic_, this.board_, this.oppPlayer_);
+                move = this.currPlayer.getNextMove(this.view_, this.logic, this.board, this.oppPlayer);
 
                 // check that move is allowed
                 // while move isn't legal - get another move from player
-                while (!this.logic_.isMoveAllowed(move, this.currPlayer_)) {
+                while (!this.logic.isMoveAllowed(move, this.currPlayer)) {
                     this.view_.showMessage("Illegal move, try again.");
-                    move = this.currPlayer_.getNextMove(this.view_, this.logic_, this.board_, this.oppPlayer_);
+                    move = this.currPlayer.getNextMove(this.view_, this.logic, this.board, this.oppPlayer);
                 }
 
                 // call logic to play move
-                this.logic_.playMove(move, this.currPlayer_, this.board_, this.oppPlayer_);
+                this.logic.playMove(move, this.currPlayer, this.board, this.oppPlayer);
 
                 // update flag
                 noMoves = false;
@@ -104,16 +112,16 @@ public class GameManager {
 
             // show board and last moves
             this.view_.showMessage("\nCurrent board:");
-            this.view_.printBoard(this.board_.getBoard(), this.board_.getSize());
+            this.view_.printBoard(this.board.getBoard(), this.board.getSize());
             // message of last turn - if was played
             if (!noMoves) {
-                this.view_.messagePlayerMove(move, this.currPlayer_.getName());
+                this.view_.messagePlayerMove(move, this.currPlayer.getName());
             }
 
             // switch players
-            HumanPlayer temp = this.currPlayer_;
-            this.currPlayer_ = this.oppPlayer_;
-            this.oppPlayer_ = temp;
+            HumanPlayer temp = this.currPlayer;
+            this.currPlayer = this.oppPlayer;
+            this.oppPlayer = temp;
         }
         this.showWinner();
     }
@@ -123,10 +131,10 @@ public class GameManager {
      * @return player who won this game
      */
     public void showWinner() {
-        if (this.currPlayer_.getScore() > this.oppPlayer_.getScore()) {
-            this.view_.messageWinner(this.currPlayer_.getName());
-        } else if (this.currPlayer_.getScore() < this.oppPlayer_.getScore()) {
-            this.view_.messageWinner(this.oppPlayer_.getName());
+        if (this.currPlayer.getScore() > this.oppPlayer.getScore()) {
+            this.view_.messageWinner(this.currPlayer.getName());
+        } else if (this.currPlayer.getScore() < this.oppPlayer.getScore()) {
+            this.view_.messageWinner(this.oppPlayer.getName());
         } else {
             this.view_.showMessage("Game over! Tie!! Players have equal scores.");
         }

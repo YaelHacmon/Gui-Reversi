@@ -85,9 +85,8 @@ public class SettingsController implements Initializable {
             this.messageText.setText("Players' colors must be different, please try again");
             this.messageText.setFill(Color.RED);
         } else {
-            // create string to save, format: boardSize \n ../../pics/playerColor.png \n ../../pics/opponentColor.png
-            String output = this.boardSize + "\n../../pics/" + this.playerColor + ".png\n../../pics/"
-                    + this.opponentColor + ".png";
+            // create string to save, format: boardSize \n pics/playerColor.png \n pics/opponentColor.png
+            String output = this.boardSize + "\npics/" + this.playerColor + ".png\npics/" + this.opponentColor + ".png";
 
             // save to file
             // if succeeded - show message

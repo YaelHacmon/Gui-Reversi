@@ -17,7 +17,6 @@ import reversiapp.GameManager;
 import reversiapp.HumanPlayer;
 import reversiapp.ReversiListener;
 import reversiapp.StandardMoveLogic;
-import reversiapp.ViewGame;
 
 public class RevesiGameController implements Initializable {
     @FXML
@@ -34,8 +33,6 @@ public class RevesiGameController implements Initializable {
 
     @FXML
     private Label blackPlayerScoreText;
-
-    private BoardController boardController;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -102,9 +99,9 @@ public class RevesiGameController implements Initializable {
      */
 
     private void createGame(int bSize, String playerX, String playerO) {
-        // get just color from path - for labels
-        String colorX = playerX.substring(11, playerX.length() - 5);
-        String colorO = playerO.substring(11, playerO.length() - 5);
+        // get just color from path - for labels (pics/COLOR.png) -> COLOR
+        String colorX = playerX.substring(5, playerX.length() - 5);
+        String colorO = playerO.substring(5, playerO.length() - 5);
 
         // intialize labels
         this.currPlayerText.setText("Current player: " + colorX);
@@ -116,38 +113,30 @@ public class RevesiGameController implements Initializable {
                 this.blackPlayerScoreText);
 
         // CREATE GAME
-        // TODO - add listener to gameManager/board (i think board)
-        // TODO - change MazeBoard to Cont
+        // TODO - add listener to gameManager/board (i think game manager)
 
-        // allocate menu, board, logic and view on stack - currently there is only one type of logic and view, no need
-        // to allocate dynamically
+        // create board by given size
         Board board = new Board(bSize);
 
-        StandardMoveLogic ml = new StandardMoveLogic();
+        // create board controller to show board
+        BoardController boardController = new BoardController(board, playerX, playerO);
+        boardController.setPrefWidth(400);
+        boardController.setPrefHeight(400);
+        this.root.getChildren().add(0, boardController);
 
-        ViewGame view = null;
+        // create move logic
+        StandardMoveLogic ml = new StandardMoveLogic();
 
         // allocate dynamically due to using abstract base type
         // first player is always the human player and is black
         HumanPlayer player1 = new HumanPlayer("X", ElementInBoard.BLACK);
 
-        // start game - opening message
-        view.showMessage("Welcome to Reversi!");
-
         HumanPlayer player2 = new HumanPlayer("O", ElementInBoard.WHITE);
 
         // allocate game manager on stack, sending abstract types by pointer and actual types by reference
-        GameManager game_manger = new GameManager(view, board, player1, player2, ml);
+        GameManager game_manger = new GameManager(board, player1, player2, ml, listener, boardController);
 
         // play game
         game_manger.playGame();
-
-        // TODO - change to boardController
-        BoardController boardControl = new BoardController(board);
-        boardControl.setPrefWidth(400);
-        boardControl.setPrefHeight(400);
-        this.root.getChildren().add(0, boardControl);
-        boardControl.draw();
-
     }
 }
