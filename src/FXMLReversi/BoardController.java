@@ -4,6 +4,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import reversiapp.Board;
+import reversiapp.GameManager;
 import reversiapp.Position;
 
 public class BoardController extends GridPane {
@@ -13,11 +14,14 @@ public class BoardController extends GridPane {
 
     private String pathOColor;
 
+    private GameManager manager;
+
     // TODO- CONSTRUCTOR
-    public BoardController(Board b, String pathX, String pathO) {
+    public BoardController(Board b, String pathX, String pathO, GameManager gm) {
         this.board = b;
         this.pathXColor = pathX;
         this.pathOColor = pathO;
+        this.manager = gm;
     }
 
     public void draw() {
@@ -50,8 +54,26 @@ public class BoardController extends GridPane {
         }
     }
 
-    // TODO
-    public Position calcMouseClick(MouseEvent event) {
+    /**
+     * Handles the event of a player clicking on the board.
+     * @param event
+     */
+    public void calcMouseClick(MouseEvent event) {
+        double x = event.getSceneX();
+        double y = event.getSceneY();
 
+        this.getPrefHeight();
+        int width = (int) this.getPrefWidth();
+
+        int pressedX = (int) ((width / this.board.getSize()) * x);
+        int pressedY = (int) ((width / this.board.getSize()) * y);
+
+        boolean gameContinues = this.manager.playTurn(new Position(pressedX, pressedY));
+
+        if (!gameContinues) {
+            Alert.display("Game over!", this.manager.winner());
+            // TODO - return to menu?
+            System.exit(0);
+        }
     }
 }

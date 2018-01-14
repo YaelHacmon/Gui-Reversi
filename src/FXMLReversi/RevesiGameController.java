@@ -34,6 +34,9 @@ public class RevesiGameController implements Initializable {
     @FXML
     private Label blackPlayerScoreText;
 
+    @FXML
+    private Label messages;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // open file to get settings
@@ -110,7 +113,7 @@ public class RevesiGameController implements Initializable {
 
         // create listener with the given labels
         ReversiListener listener = new ReversiListener(this.currPlayerText, this.whitePlayerScoreText,
-                this.blackPlayerScoreText);
+                this.blackPlayerScoreText, this.messages);
 
         // CREATE GAME
         // TODO - add listener to gameManager/board (i think game manager)
@@ -118,25 +121,22 @@ public class RevesiGameController implements Initializable {
         // create board by given size
         Board board = new Board(bSize);
 
-        // create board controller to show board
-        BoardController boardController = new BoardController(board, playerX, playerO);
-        boardController.setPrefWidth(400);
-        boardController.setPrefHeight(400);
-        this.root.getChildren().add(0, boardController);
-
         // create move logic
         StandardMoveLogic ml = new StandardMoveLogic();
 
         // allocate dynamically due to using abstract base type
         // first player is always the human player and is black
-        HumanPlayer player1 = new HumanPlayer("X", ElementInBoard.BLACK);
+        HumanPlayer player1 = new HumanPlayer(colorX, ElementInBoard.BLACK);
 
-        HumanPlayer player2 = new HumanPlayer("O", ElementInBoard.WHITE);
+        HumanPlayer player2 = new HumanPlayer(colorO, ElementInBoard.WHITE);
 
         // allocate game manager on stack, sending abstract types by pointer and actual types by reference
-        GameManager game_manger = new GameManager(board, player1, player2, ml, listener, boardController);
+        GameManager game_manger = new GameManager(board, player1, player2, ml, listener);
 
-        // play game
-        game_manger.playGame();
+        // create board controller to show board
+        BoardController boardController = new BoardController(board, playerX, playerO, game_manger);
+        boardController.setPrefWidth(400);
+        boardController.setPrefHeight(400);
+        this.root.getChildren().add(0, boardController);
     }
 }

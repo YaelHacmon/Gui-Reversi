@@ -16,16 +16,28 @@ public class ReversiListener {
     @FXML
     private Label blackPlayerScoreText;
 
+    @FXML
+    private Label messages;
+
     /**
      * Creates listener with given labels
      * @param currPlayerText label of current player
      * @param whitePlayerScoreText label of "X" player's score
      * @param blackPlayerScoreText label of "O" player's score
      */
-    public ReversiListener(Label currPlayerText, Label whitePlayerScoreText, Label blackPlayerScoreText) {
+    public ReversiListener(Label currPlayerText, Label whitePlayerScoreText, Label blackPlayerScoreText, Label m) {
         this.currPlayerText = currPlayerText;
         this.whitePlayerScoreText = whitePlayerScoreText;
         this.blackPlayerScoreText = blackPlayerScoreText;
+        this.messages = m;
+    }
+
+    /**
+     * Updates the message to the player. For showing moves, invalid move, etc.
+     * @param m message to show
+     */
+    public void updateMessage(String m) {
+        this.messages.setText(m);
     }
 
     /**

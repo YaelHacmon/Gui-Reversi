@@ -173,4 +173,29 @@ public class Board {
     public void removeCellFromEmptyList(Position removalPoint) {
         this.emptyCells_.remove(removalPoint);
     }
+
+    /**
+     * Counts the number of cells with the given color on the given board.
+     *
+     * @param b full Board to count cells of
+     * @param c color of cells to count
+     * @return number of cells with given color
+     */
+    public int countColor(ElementInBoard c) {
+        // initialize variables
+        int counter = 0;
+
+        // go over board and count c-colored squares
+        for (int i = 0; i < this.getSize(); i++) {
+            for (int j = 0; j < this.getSize(); j++) {
+                // if colors match
+                if (this.getCell(new Position(i, j)) == c) {
+                    // increment counter
+                    counter++;
+                }
+            }
+        }
+
+        return counter;
+    }
 }
