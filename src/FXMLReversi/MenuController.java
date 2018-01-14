@@ -62,14 +62,6 @@ public class MenuController implements Initializable {
             System.out.println("ChangeSettings error:");
             ex.printStackTrace();
         }
-        Thread gameThread = new Thread() {
-            @Override
-            // TODO y needed??
-            public void run() {
-
-            }
-        };
-        gameThread.start();
     }
 
 }
