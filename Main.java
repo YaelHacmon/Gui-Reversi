@@ -1,20 +1,20 @@
-package reversiapp;
+package reversiap;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class ReversiJava extends Application {
+public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
             // load root from fxml
-            BorderPane root = (BorderPane) FXMLLoader.load(this.getClass().getResource("FAMLReversi/MenuFXML.fxml"));
+            VBox root = (VBox) FXMLLoader.load(this.getClass().getResource("menu.fxml"));
             // create scene
             Scene scene = new Scene(root, 400, 400);
-            scene.getStylesheets().add(this.getClass().getResource("FAMLReversi/reversiapp.css").toExternalForm());
+            scene.getStylesheets().add(this.getClass().getResource("application.css").toExternalForm());
             // set stage to use scene
             primaryStage.setScene(scene);
             // show stage

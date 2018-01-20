@@ -1,7 +1,6 @@
 package reversiap;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -92,16 +91,45 @@ public class Board {
         return this.getCell(pos) == ElementInBoard.EMPTY;
     }
 
+    /**
+     * Checks if a given position is in board range.
+     * @param p position to check
+     * @return true if in range, false otherwise
+     */
+    public boolean inRange(Position p) {
+        return ((p.getRow() >= 0) && (p.getColumn() >= 0) && (p.getColumn() < this.getSize())
+                && (p.getRow() < this.getSize()));
+    }
+
     public boolean compareCellColors(Position loc1, Position loc2) {
         return this.getCell(loc1) == this.getCell(loc2);
     }
 
     public boolean compareCellColors(ElementInBoard c, Position loc) {
-        return this.getCell(loc) == c;
+        return (c != ElementInBoard.EMPTY && this.getCell(loc) == c);
+    }
+
+    /**
+     * Flips the color at the given position, if non-empty.
+     * If color is black cell will become white, and vice versa.
+     * @param p position to flip
+     */
+    public void flipColor(Position p) {
+        // check that cell is not empty
+        if (!this.isCellEmpty(p.getRow(), p.getColumn())) {
+            // if cell is black
+            if (this.compareCellColors(ElementInBoard.BLACK, p)) {
+                // flip to white
+                this.gameBoard_[p.getRow()][p.getColumn()] = ElementInBoard.WHITE;
+            } else {
+                // else cell is white - flip to black
+                this.gameBoard_[p.getRow()][p.getColumn()] = ElementInBoard.BLACK;
+            }
+        }
     }
 
     public void makeInColor(ElementInBoard c, int row, int col) {
-    	System.out.println(this.gameBoard_[row][col]);
+        System.out.println(this.gameBoard_[row][col]);
         this.gameBoard_[row][col] = c;
         System.out.println(this.gameBoard_[row][col]);
         // remove from list of empty cells
@@ -160,12 +188,8 @@ public class Board {
         return this.emptyCells_.isEmpty();
     }
 
-    public Iterator<Position> emptyCellsBegin() {
-        return this.emptyCells_.listIterator(0);
-    }
-
-    public Iterator<Position> emptyCellsEnd() {
-        return this.emptyCells_.listIterator(this.emptyCells_.size());
+    public List<Position> emptyCells() {
+        return this.emptyCells_;
     }
 
     public ElementInBoard getCell(Position loc) {
