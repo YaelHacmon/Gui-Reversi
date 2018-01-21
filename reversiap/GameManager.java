@@ -41,9 +41,9 @@ public class GameManager {
         this.oppPlayer = white;
         this.logic = log;
         this.listener = list;
-        
+
         this.logic.updateMoveOptions(this.currPlayer, this.board);
-     // show options
+        // show options
         this.listener.updateMessage("Possible moves: " + this.currPlayer.getPossibleMoves().toString());
     }
 
@@ -53,8 +53,6 @@ public class GameManager {
      * @return true if game continues, false otherwise
      */
     public boolean playTurn(Position move) {
-    	System.out.println(move);
-    	
         // check that move is allowed, if not return from method
         // while move isn't legal - get another move from player
         if (!this.logic.isMoveAllowed(move, this.currPlayer)) {
@@ -63,7 +61,6 @@ public class GameManager {
             return true;
         }
 
-        System.out.println("move allowed");
         // call logic to play move
         this.logic.playMove(move, this.currPlayer, this.board, this.oppPlayer);
 
@@ -89,6 +86,9 @@ public class GameManager {
 
             // show options
             this.listener.updateMessage("Possible moves: " + this.currPlayer.getPossibleMoves().toString());
+
+            // show name of playing player
+            this.listener.changeCurrentPlayer(this.currPlayer.getName());
         } else {
             // update moves of current player
             this.logic.updateMoveOptions(this.currPlayer, this.board);

@@ -44,7 +44,7 @@ public class Position {
 
     @Override
     public String toString() {
-        return "(" + Integer.toString(this.row_) + "," + Integer.toString(this.col_) + ")";
+        return "(" + Integer.toString(this.row_ + 1) + "," + Integer.toString(this.col_ + 1) + ")";
     }
 
     public void set(int row, int col) {

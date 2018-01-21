@@ -129,9 +129,7 @@ public class Board {
     }
 
     public void makeInColor(ElementInBoard c, int row, int col) {
-        System.out.println(this.gameBoard_[row][col]);
         this.gameBoard_[row][col] = c;
-        System.out.println(this.gameBoard_[row][col]);
         // remove from list of empty cells
         this.emptyCells_.remove(new Position(row, col));
     }

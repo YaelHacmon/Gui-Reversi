@@ -18,6 +18,7 @@ public class Alert {
         window.setTitle(title);
 
         window.setMinWidth(250);
+        window.setMinHeight(150);
 
         Label label = new Label();
         label.setText(message);

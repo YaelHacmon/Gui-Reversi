@@ -34,13 +34,14 @@ public class BoardController extends GridPane {
         for (int i = 0; i < this.board.getSize(); i++) {
             for (int j = 0; j < this.board.getSize(); j++) {
                 Rectangle rect = new Rectangle(cellWidth, cellHeight);
-                rect.setFill(Color.BEIGE);
-                rect.setStroke(Color.BLACK);
+                rect.setFill(Color.LIGHTSLATEGREY);
+                rect.setStroke(Color.SLATEGREY);
 
                 this.add(rect, j, i);
             }
         }
-        // draw ellipse if there is 'x' or 'o' on the board
+
+        // draw circle, if cell is colored
         for (int i = 0; i < this.board.getSize(); i++) {
             for (int j = 0; j < this.board.getSize(); j++) {
                 if (this.board.isCellBlack(i, j)) {
@@ -61,8 +62,6 @@ public class BoardController extends GridPane {
      * @param event
      */
     public void calcMouseClick(MouseEvent event) {
-        System.out.println("inside");
-
         int height = (int) this.getPrefHeight();
         int width = (int) this.getPrefWidth();
 
@@ -73,7 +72,11 @@ public class BoardController extends GridPane {
         int column = (int) event.getX() / cellWidth;
         int row = (int) event.getY() / cellHeight;
 
+        // play turn
         boolean gameContinues = this.manager.playTurn(new Position(row, column));
+
+        // draw board
+        this.draw();
 
         if (!gameContinues) {
             Alert.display("Game over!", this.manager.winner());
@@ -96,7 +99,7 @@ public class BoardController extends GridPane {
             case "Red":
                 return Color.RED;
             case "Yellow":
-                return Color.YELLOW;
+                return Color.GOLD;
             case "Green":
                 return Color.GREEN;
             case "Blue":

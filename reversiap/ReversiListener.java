@@ -18,8 +18,9 @@ public class ReversiListener {
 
     @FXML
     private Label messages;
-    
+
     private String player1;
+
     private String player2;
 
     /**
@@ -28,7 +29,8 @@ public class ReversiListener {
      * @param whitePlayerScoreText label of "X" player's score
      * @param blackPlayerScoreText label of "O" player's score
      */
-    public ReversiListener(String player1, String player2, Label currPlayerText, Label whitePlayerScoreText, Label blackPlayerScoreText, Label m) {
+    public ReversiListener(String player1, String player2, Label currPlayerText, Label whitePlayerScoreText,
+            Label blackPlayerScoreText, Label m) {
         this.currPlayerText = currPlayerText;
         this.whitePlayerScoreText = whitePlayerScoreText;
         this.blackPlayerScoreText = blackPlayerScoreText;
@@ -50,7 +52,7 @@ public class ReversiListener {
      * @param player name
      */
     public void changeCurrentPlayer(String player) {
-        this.currPlayerText.setText(player);
+        this.currPlayerText.setText("Current player: " + player);
     }
 
     /**
