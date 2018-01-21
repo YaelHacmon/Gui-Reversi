@@ -1,4 +1,4 @@
-package reversiap;
+package gamecore;
 
 /*
  * Roni Fultheim, ID: 313465965

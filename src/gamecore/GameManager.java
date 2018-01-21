@@ -1,4 +1,6 @@
-package reversiap;
+package gamecore;
+
+import reversiap.ReversiListener;
 
 /**
  * Yael Hacmon, ID 313597897

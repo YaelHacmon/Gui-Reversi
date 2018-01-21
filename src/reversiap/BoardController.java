@@ -1,5 +1,8 @@
 package reversiap;
 
+import gamecore.Board;
+import gamecore.GameManager;
+import gamecore.Position;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;

@@ -1,4 +1,4 @@
-package reversiap;
+package gamecore;
 
 public class Position {
     // row of location on map

@@ -17,6 +17,7 @@ public class Main extends Application {
             scene.getStylesheets().add(this.getClass().getResource("application.css").toExternalForm());
             // set stage to use scene
             primaryStage.setScene(scene);
+            primaryStage.setTitle("Welcome to Reversi!");
             // show stage
             primaryStage.show();
         } catch (Exception e) {

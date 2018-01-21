@@ -1,4 +1,4 @@
-package reversiap;
+package gamecore;
 
 import java.util.ArrayList;
 
@@ -119,7 +119,6 @@ public class StandardMoveLogic {
             for (Position p : positions) {
                 // if at least one direction needs to be flipped - stop and add
                 if (!p.equals(cell)) {
-                    System.out.println(cell);
                     possible.add(cell);
                     break;
                 }
