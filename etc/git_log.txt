@@ -1,3 +1,15 @@
+commit 3732076db8778aaecc268bb67437f54210050f70
+Author: Roni Fultheim <ronif10@gmai.com>
+Date:   Sun Jan 21 23:09:25 2018 +0200
+
+    jar created
+
+commit 96f279d2522f86203a52f9b6b45b86348dee332f
+Author: Roni Fultheim <ronif10@gmai.com>
+Date:   Sun Jan 21 18:09:17 2018 +0200
+
+    zip created
+
 commit b43576545b21b4281c59aa7072b13b0d99c034e5
 Author: Roni Fultheim <ronif10@gmai.com>
 Date:   Sun Jan 21 18:06:50 2018 +0200
