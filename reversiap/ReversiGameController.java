@@ -1,6 +1,7 @@
 package reversiap;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -13,98 +14,104 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
 public class ReversiGameController implements Initializable {
-	@FXML
-	private HBox root;
+    @FXML
+    private HBox root;
 
-	@FXML
-	private GridPane board;
+    @FXML
+    private GridPane board;
 
-	@FXML
-	private Label currPlayerText;
+    @FXML
+    private Label currPlayerText;
 
-	@FXML
-	private Label whitePlayerScoreText;
+    @FXML
+    private Label whitePlayerScoreText;
 
-	@FXML
-	private Label blackPlayerScoreText;
+    @FXML
+    private Label blackPlayerScoreText;
 
-	@FXML
-	private Label messages;
+    @FXML
+    private Label messages;
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		// open file to get settings
-		// create FileReader from given path - must use try-catch (exception thrown if file does not exist)
-		String size = "";
-		String color1 = "";
-		String color2 = "";
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        // open file to get settings
+        // create FileReader from given path - must use try-catch (exception thrown if file does not exist)
+        String size = "";
+        String color1 = "";
+        String color2 = "";
 
-		try {
-			FileReader fReader = new FileReader("settings.txt");
+        try {
+            File path = new File("settings.txt");
 
-			// create buffered reader for easy file reading
-			BufferedReader br = new BufferedReader(fReader);
+            // if there is no settings file - use default values
+            if (!path.exists() || path.isDirectory()) {
+                this.createGame(8, "Black", "White");
+                return;
+            }
 
-			// reading color of first player
-			color1 = br.readLine().trim();
+            FileReader fReader = new FileReader(path);
 
-			// reading color of second player
-			color2 = br.readLine().trim();
-			
-			// reading size of board
-			size = br.readLine().trim();
+            // create buffered reader for easy file reading
+            BufferedReader br = new BufferedReader(fReader);
 
-			// finished reading - close reader
-			br.close();
+            // reading color of first player
+            color1 = br.readLine().trim();
 
-		} catch (FileNotFoundException e) {
-			// catch file not found exception
-			System.out.println("File was not found");
-			e.printStackTrace();
-		} catch (IOException e) {
-			System.out.println("An error occured while reading input file");
-			e.printStackTrace();
-		}
+            // reading color of second player
+            color2 = br.readLine().trim();
 
-		this.createGame(Integer.parseInt(size), color1, color2);
+            // reading size of board
+            size = br.readLine().trim();
 
-	}
+            // finished reading - close reader
+            br.close();
 
-	private void createGame(int bSize, String playerX, String playerO) {	
-		// intialize labels
-		this.currPlayerText.setText("Current player: " + playerX);
-		this.blackPlayerScoreText.setText(playerX + " player score: 2");
-		this.whitePlayerScoreText.setText(playerO + " player score: 2");
-		
-		this.messages.wrapTextProperty();
+        } catch (FileNotFoundException e) {
+            // catch file not found exception
+            System.out.println("File was not found");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("An error occured while reading input file");
+            e.printStackTrace();
+        }
 
+        this.createGame(Integer.parseInt(size), color1, color2);
 
-		// create listener with the given labels
-		ReversiListener listener = new ReversiListener(playerX, playerO, this.currPlayerText, this.whitePlayerScoreText,
-				this.blackPlayerScoreText, this.messages);
-		
-		// create board by given size
-		Board board = new Board(bSize);
+    }
 
-		// create move logic
-		StandardMoveLogic ml = new StandardMoveLogic();
+    private void createGame(int bSize, String playerX, String playerO) {
+        // intialize labels
+        this.currPlayerText.setText("Current player: " + playerX);
+        this.blackPlayerScoreText.setText(playerX + " player score: 2");
+        this.whitePlayerScoreText.setText(playerO + " player score: 2");
 
-		// allocate dynamically due to using abstract base type
-		// first player is always the human player and is black
-		HumanPlayer player1 = new HumanPlayer(playerX, ElementInBoard.BLACK);
+        this.messages.setWrapText(true);
 
-		HumanPlayer player2 = new HumanPlayer(playerO, ElementInBoard.WHITE);
+        // create listener with the given labels
+        ReversiListener listener = new ReversiListener(playerX, playerO, this.currPlayerText, this.whitePlayerScoreText,
+                this.blackPlayerScoreText, this.messages);
 
-		// allocate game manager on stack, sending abstract types by pointer and actual types by reference
-		GameManager game_manger = new GameManager(board, player1, player2, ml, listener);
-		
+        // create board by given size
+        Board board = new Board(bSize);
 
-		// create board controller to show board
-		BoardController boardController = new BoardController(board, playerX, playerO, game_manger);
-		boardController.setPrefWidth(400);
-		boardController.setPrefHeight(400);
-		this.root.getChildren().add(0, boardController);
-		
-		boardController.draw();
-	}
+        // create move logic
+        StandardMoveLogic ml = new StandardMoveLogic();
+
+        // allocate dynamically due to using abstract base type
+        // first player is always the human player and is black
+        HumanPlayer player1 = new HumanPlayer(playerX, ElementInBoard.BLACK);
+
+        HumanPlayer player2 = new HumanPlayer(playerO, ElementInBoard.WHITE);
+
+        // allocate game manager on stack, sending abstract types by pointer and actual types by reference
+        GameManager game_manger = new GameManager(board, player1, player2, ml, listener);
+
+        // create board controller to show board
+        BoardController boardController = new BoardController(board, playerX, playerO, game_manger);
+        boardController.setPrefWidth(480);
+        boardController.setPrefHeight(480);
+        this.root.getChildren().add(0, boardController);
+
+        boardController.draw();
+    }
 }
