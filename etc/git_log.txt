@@ -1,0 +1,173 @@
+commit b43576545b21b4281c59aa7072b13b0d99c034e5
+Author: Roni Fultheim <ronif10@gmai.com>
+Date:   Sun Jan 21 18:06:50 2018 +0200
+
+    all done, missing just jar file
+
+commit 95580258368b28477ea99c58412b42d5e3814365
+Author: Roni Fultheim <ronif10@gmai.com>
+Date:   Sun Jan 21 17:50:54 2018 +0200
+
+    all done! shenizke
+
+commit 2b5ae156ca92081cc4521e5028ce292637aa14a9
+Author: Roni Fultheim <ronif10@gmai.com>
+Date:   Sun Jan 21 17:43:17 2018 +0200
+
+    added default settings
+
+commit ec14f3b468e1d6c5e205549c29227418fe5bc798
+Author: Roni Fultheim <ronif10@gmai.com>
+Date:   Sun Jan 21 17:21:21 2018 +0200
+
+    added all in one package, works now
+
+commit 9af00f2afea38ca6595c46170577446125b00d67
+Author: Roni Fultheim <ronif10@gmai.com>
+Date:   Sat Jan 20 23:54:05 2018 +0200
+
+    this currently works
+
+commit 0f477701fea11bb7af3fe04d6a5f0da3dd91f446
+Author: YaelHacmon <33732370+YaelHacmon@users.noreply.github.com>
+Date:   Wed Jan 17 14:26:17 2018 +0200
+
+    Add files via upload
+
+commit dfd6683e5d09204acf2e49402b630e1d11b839c9
+Merge: 7aa9f87 59c616e
+Author: Roni Fultheim <ronif10@gmai.com>
+Date:   Sun Jan 14 22:14:54 2018 +0200
+
+    Merge branch 'master' of https://github.com/YaelHacmon/Gui-Reversi
+
+commit 59c616e5dddccc2b74a14fe1ff97766bc402b9a4
+Author: YaelHacmon <33732370+YaelHacmon@users.noreply.github.com>
+Date:   Sun Jan 14 22:05:15 2018 +0200
+
+    Delete ViewGame.java
+
+commit 7aa9f87a92d6a8947c2acb120d876ca2a470ec52
+Author: Roni Fultheim <ronif10@gmai.com>
+Date:   Sun Jan 14 20:54:20 2018 +0200
+
+    try to run me now :)
+
+commit 2107ec6cf65e002df146bf991df96eaf23399b6d
+Author: Roni Fultheim <ronif10@gmai.com>
+Date:   Sun Jan 14 18:02:16 2018 +0200
+
+    try to run me :)
+
+commit 96ad9c964188d62f006d54ab1130144322d18b8f
+Author: YaelHacmon <33732370+YaelHacmon@users.noreply.github.com>
+Date:   Sun Jan 14 14:19:04 2018 +0200
+
+    Create GameFXML
+
+commit 45ffc4fdf28b59b3530180f59dc2762acd6f6ddd
+Author: YaelHacmon <33732370+YaelHacmon@users.noreply.github.com>
+Date:   Sun Jan 14 14:16:43 2018 +0200
+
+    Create BoardFXML
+
+commit 1112cd9e82c8fb05bd4147d15bf6f044ac6895e8
+Author: Roni Fultheim <ronif10@gmai.com>
+Date:   Fri Jan 12 13:37:45 2018 +0200
+
+    trying to fix reversi and board controller. must create fxml for them
+
+commit 57c1570660d50bb11ac281d3a08f6f4d99b2606e
+Merge: 2f5672a 305e96b
+Author: Roni Fultheim <ronif10@gmai.com>
+Date:   Fri Jan 12 12:33:35 2018 +0200
+
+    ^X
+    Merge branch 'master' of https://github.com/YaelHacmon/Gui-Reversi
+
+commit 2f5672a33d41fc018c118b6c40a64a85bb1ffe69
+Author: Roni Fultheim <ronif10@gmai.com>
+Date:   Fri Jan 12 12:32:20 2018 +0200
+
+    trying to fix reversi and board controller. must create fxml for them
+
+commit 305e96b7bfa780cefc5a2e696d76823a39459813
+Author: YaelHacmon <33732370+YaelHacmon@users.noreply.github.com>
+Date:   Fri Jan 12 10:20:05 2018 +0200
+
+    Delete Main.java
+
+commit 9d6b04ad90dc6dba888ef16f08b4919cf0c5dc67
+Author: YaelHacmon <33732370+YaelHacmon@users.noreply.github.com>
+Date:   Fri Jan 12 10:18:42 2018 +0200
+
+    Update ReversiJava.java
+
+commit c6c729b3c5ba01a8f8873453ca0599e33fd703d8
+Author: Roni Fultheim <ronif10@gmai.com>
+Date:   Fri Jan 12 10:11:21 2018 +0200
+
+    reset packages
+
+commit 47550b2bce7ebbcbdb3235da7c1ab822ac47e061
+Author: Roni Fultheim <ronif10@gmai.com>
+Date:   Thu Jan 11 18:17:38 2018 +0200
+
+    organized a bit, started BoardController constructor
+
+commit 01ab77a9c154a8055b2f1c33fb82c1548f8a5536
+Author: Roni Fultheim <ronif10@gmai.com>
+Date:   Thu Jan 11 17:42:15 2018 +0200
+
+    finished settings scene
+
+commit b3f233be5d6dcd690073aa82aa9b73f8fdcd1f45
+Author: Roni Fultheim <ronif10@gmai.com>
+Date:   Wed Jan 10 23:12:54 2018 +0200
+
+    created FXML for menu, updated FXML of settings as required by ex6, partially implemented SettingsController
+
+commit d624d36955a0ed24455e2a5f3c726f748f85f116
+Author: Roni Fultheim <ronif10@gmai.com>
+Date:   Wed Jan 10 13:00:14 2018 +0200
+
+    fixed packages
+
+commit 8310681e6310d0afc7f2afffc9e66680f0277c3b
+Author: Roni Fultheim <ronif10@gmai.com>
+Date:   Wed Jan 10 12:43:46 2018 +0200
+
+    fixed packages
+
+commit 2d43da5454a03d58b3cc4cd571649351ae91ab63
+Author: YaelHacmon <33732370+YaelHacmon@users.noreply.github.com>
+Date:   Wed Jan 10 03:46:43 2018 +0200
+
+    Add files via upload
+    
+    commit number two:
+    from the folder of the FXML files.
+    adding 4 controllers: menu , ReversiGame , Setting , Board. setting is not implement, and the rest are not fully implement.
+    need for each controller make fxml file - automatic by  Scene Builder - it Does not work at my eclipse.
+
+commit b3836a3cc2f013ead23efd2eaacfa5e24fca956e
+Author: YaelHacmon <33732370+YaelHacmon@users.noreply.github.com>
+Date:   Wed Jan 10 03:37:38 2018 +0200
+
+    Add files via upload
+    
+    I uploaded manually so it is not sorted in folders, sorry.
+    current package: reversiapp
+    adding GUIAdapter for every class that use GUI, and ReversiJava for the start function.
+
+commit cadcc4f3b06e95ac5b932d72ce8544944c355d7b
+Author: YaelHacmon <33732370+YaelHacmon@users.noreply.github.com>
+Date:   Mon Jan 8 22:36:12 2018 +0200
+
+    Update README.md
+
+commit 77e6b9079ccb9a8e982f2188529accbda812d125
+Author: YaelHacmon <33732370+YaelHacmon@users.noreply.github.com>
+Date:   Mon Jan 8 22:35:28 2018 +0200
+
+    Initial commit
