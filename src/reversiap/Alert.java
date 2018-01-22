@@ -9,7 +9,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class Alert {
-    public static void display(String title, String message) {
+    public void display(String title, String message) {
         // create new stage
         Stage window = new Stage();
 
@@ -23,7 +23,7 @@ public class Alert {
         Label label = new Label();
         label.setText(message);
 
-        Button close = new Button("Close game");
+        Button close = new Button("Return to menu");
         close.setOnAction(EventHandler -> window.close());
 
         // create new scene, add label and button and set to center of screen
@@ -32,6 +32,7 @@ public class Alert {
         layout.setAlignment(Pos.CENTER);
 
         Scene scene = new Scene(layout);
+        scene.getStylesheets().add(this.getClass().getResource("application.css").toExternalForm());
 
         window.setScene(scene);
         window.showAndWait();

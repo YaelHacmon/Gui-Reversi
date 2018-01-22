@@ -1,13 +1,19 @@
 package reversiap;
 
+import java.io.IOException;
 import gamecore.Board;
 import gamecore.GameManager;
 import gamecore.Position;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.effect.InnerShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 
 public class BoardController extends GridPane {
     private Board board;
@@ -18,7 +24,13 @@ public class BoardController extends GridPane {
 
     private GameManager manager;
 
-    // TODO- CONSTRUCTOR
+    /**
+     * C'tor of board controller, taking colors of playes, game manager to manage game and board to play on
+     * @param b board to play on
+     * @param pathX color of player 1
+     * @param pathO color of player 2
+     * @param gm game manager to handle game
+     */
     public BoardController(Board b, String pathX, String pathO, GameManager gm) {
         this.board = b;
         this.xColor = this.parse(pathX);
@@ -37,8 +49,8 @@ public class BoardController extends GridPane {
         for (int i = 0; i < this.board.getSize(); i++) {
             for (int j = 0; j < this.board.getSize(); j++) {
                 Rectangle rect = new Rectangle(cellWidth, cellHeight);
-                rect.setFill(Color.LIGHTSLATEGREY);
-                rect.setStroke(Color.SLATEGREY);
+                rect.setFill(Color.BISQUE);
+                rect.setStroke(Color.ORANGE);
 
                 this.add(rect, j, i);
             }
@@ -50,10 +62,12 @@ public class BoardController extends GridPane {
                 if (this.board.isCellBlack(i, j)) {
                     Ellipse e = new Ellipse(cellWidth / 2, cellHeight / 2);
                     e.setFill(this.xColor);
+                    e.setEffect(new InnerShadow());
                     this.add(e, j, i);
                 } else if (this.board.isCellWhite(i, j)) {
                     Ellipse e = new Ellipse(cellWidth / 2, cellHeight / 2);
                     e.setFill(this.oColor);
+                    e.setEffect(new InnerShadow());
                     this.add(e, j, i);
                 }
             }
@@ -82,9 +96,24 @@ public class BoardController extends GridPane {
         this.draw();
 
         if (!gameContinues) {
-            Alert.display("Game over!", this.manager.winner());
-            // TODO - return to menu?
-            System.exit(0);
+            Alert alert = new Alert();
+            alert.display("Game over!", this.manager.winner());
+
+            // return to main menu
+            try {
+                VBox root = (VBox) FXMLLoader.load(this.getClass().getResource("menu.fxml"));
+                Scene scene = new Scene(root, 300, 350);
+                scene.getStylesheets().add(this.getClass().getResource("application.css").toExternalForm());
+                Stage primaryStage = new Stage();
+                primaryStage.setTitle("Menu");
+                primaryStage.setScene(scene);
+                primaryStage.show();
+                Stage s = (Stage) this.getScene().getWindow();
+                s.close();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         }
     }
 

@@ -18,10 +18,13 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class Settings {
+    Label message;
+
     /**
      *  constructor
      */
     public Settings() {
+        this.message = new Label();
     }
 
     /**
@@ -39,7 +42,7 @@ public class Settings {
         layout.setVgap(12);
         layout.setHgap(12);
         layout.setId("set");
-        // addinig labels
+        // adding labels
         Label colorFirst = new Label("First player color:");
         colorFirst.setTextFill(Color.BLACK);
         GridPane.setConstraints(colorFirst, 0, 0);
@@ -68,7 +71,11 @@ public class Settings {
         GridPane.setConstraints(confirm, 1, 10);
         confirm.setOnAction(e -> this.writeChoice(firstPlayer, secondPlayer, size, window));
 
-        layout.getChildren().addAll(colorFirst, colorSecond, boardSize, firstPlayer, secondPlayer, size, confirm);
+        // set position of messages to user
+        GridPane.setConstraints(this.message, 1, 8);
+
+        layout.getChildren().addAll(colorFirst, colorSecond, boardSize, firstPlayer, secondPlayer, size, confirm,
+                this.message);
         layout.setId("settings");
         Scene scene = new Scene(layout, 400, 320);
         scene.getStylesheets().addAll(this.getClass().getResource("application.css").toExternalForm());
@@ -92,7 +99,15 @@ public class Settings {
         String boardSize = size.getValue();
 
         // make sure all values were filled
-        if (first == null || second == null || boardSize == null) {
+        if ((first == null || second == null || boardSize == null)) {
+            this.message.setText("Missing a field");
+            return;
+        }
+
+        // make sure that colors are different
+        if (first.equals(second)) {
+            this.message.setText("Player colors must be different");
+            this.message.setTextFill(Color.RED);
             return;
         }
 
