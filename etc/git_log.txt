@@ -1,3 +1,15 @@
+commit ffb47801eb3be6da340bfefb937482d4258c1c46
+Author: Roni Fultheim <ronif10@gmai.com>
+Date:   Mon Jan 22 13:40:02 2018 +0200
+
+    added styling
+
+commit bd155da2146139fef8de23ad890f9aa8715c2798
+Author: Roni Fultheim <ronif10@gmai.com>
+Date:   Sun Jan 21 23:17:36 2018 +0200
+
+    hand me in :)
+
 commit a98bb74c8683eda1596b592fb6b1b0895f1e995c
 Author: Roni Fultheim <ronif10@gmai.com>
 Date:   Sun Jan 21 23:16:27 2018 +0200
